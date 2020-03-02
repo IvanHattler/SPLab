@@ -107,6 +107,16 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BuisnessLogic\BuisnessLogic.csproj">
+      <Project>{5eb69419-f63a-4e4e-8437-ec5647e4c1ac}</Project>
+      <Name>BuisnessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LowLevelArithmetic\LowLevelArithmetic.csproj">
+      <Project>{4ef55d10-efec-4b60-adeb-58cef173e9b4}</Project>
+      <Name>LowLevelArithmetic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
