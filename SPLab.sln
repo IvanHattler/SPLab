@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPLab", "SPLab\SPLab.csproj", "{B247DFC7-94E3-4B92-AA24-9D255608001B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuisnessLogic", "BuisnessLogic\BuisnessLogic.csproj", "{F37EDC85-8810-4A8C-A7EF-6D3503CD8D25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LowLevelArithmetic", "LowLevelArithmetic\LowLevelArithmetic.csproj", "{4EF55D10-EFEC-4B60-ADEB-58CEF173E9B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B247DFC7-94E3-4B92-AA24-9D255608001B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B247DFC7-94E3-4B92-AA24-9D255608001B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B247DFC7-94E3-4B92-AA24-9D255608001B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F37EDC85-8810-4A8C-A7EF-6D3503CD8D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F37EDC85-8810-4A8C-A7EF-6D3503CD8D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F37EDC85-8810-4A8C-A7EF-6D3503CD8D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F37EDC85-8810-4A8C-A7EF-6D3503CD8D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF55D10-EFEC-4B60-ADEB-58CEF173E9B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF55D10-EFEC-4B60-ADEB-58CEF173E9B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF55D10-EFEC-4B60-ADEB-58CEF173E9B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF55D10-EFEC-4B60-ADEB-58CEF173E9B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

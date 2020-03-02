@@ -28,7 +28,7 @@ namespace SPLab.ViewModels
             {
                 return myCommand ?? (myCommand = new DelegateCommand(obj =>
                 {
-
+                    
                 }));
             }
         }
