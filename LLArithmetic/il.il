@@ -3,18 +3,15 @@
   .ver 1:0:0:0
 }
 .module LLArithmetic.dll
-.class public abstract auto ansi sealed beforefieldinit LLArithmetic.Summator 
+.class public abstract auto ansi sealed beforefieldinit LLArithmetic.Divider 
 	extends [mscorlib]System.Object
 {
-  .method public hidebysig static int32  Sum(int32 a, int32 b) cil managed
+  .method public hidebysig static uint32  Div(uint32 a, uint32 b) cil managed
   {
-    .maxstack 8
-	.locals init (int32 V_0)
+    .maxstack 2
 	ldarg.0
-	ldarg.1		;загрузка параметров в стек
-	add			;сложение в стеке
-	stloc.0		;загрузка в локальную переменную
-	ldloc.0		;загрузка переменной в стек как выходное значение
+	ldarg.1		//загрузка параметров в стек
+	div			//st(0)/st(1) , результат является возвращаемым значением
 	ret
   }
 }

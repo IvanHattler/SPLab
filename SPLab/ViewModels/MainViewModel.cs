@@ -12,14 +12,45 @@ namespace SPLab.ViewModels
 {
     class MainViewModel : INotifyPropertyChanged
     {
-        private int myVar;
-
-        public int MyProperty
+        public uint Denominator
         {
-            get { return myVar; }
-            set { myVar = value; OnPropertyChanged(); }
+            get
+            {
+                return _Denominator;
+            }
+            set
+            {
+                _Denominator = value;
+                OnPropertyChanged();
+            }
         }
-
+        private uint _Denominator = 4;
+        public uint Dividend
+        {
+            get
+            {
+                return _Dividend;
+            }
+            set
+            {
+                _Dividend = value;
+                OnPropertyChanged();
+            }
+        }
+        private uint _Dividend = 15;
+        public uint ResultOfDiv
+        {
+            get
+            {
+                return _ResultOfDiv;
+            }
+            set
+            {
+                _ResultOfDiv = value;
+                OnPropertyChanged();
+            }
+        }
+        private uint _ResultOfDiv = 0;
         #region Commands
         private DelegateCommand myCommand;
         public DelegateCommand My
@@ -28,7 +59,7 @@ namespace SPLab.ViewModels
             {
                 return myCommand ?? (myCommand = new DelegateCommand(obj =>
                 {
-                    var a = LLArithmetic.Summator.Sum(1,2);
+                    ResultOfDiv = LLArithmetic.Divider.Div(Dividend, Denominator);
                 }));
             }
         }
