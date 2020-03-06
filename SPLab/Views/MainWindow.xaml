@@ -11,6 +11,6 @@
         <local:MainViewModel></local:MainViewModel>
     </Window.DataContext>
     <Grid>
-        
+        <Button Command="{Binding My}"></Button>
     </Grid>
 </Window>

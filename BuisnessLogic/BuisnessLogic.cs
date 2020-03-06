@@ -20,7 +20,6 @@ namespace BuisnessLogic
                 return isExecuteMoreOne ?? (isExecuteMoreOne = CheckPhrase(Phrase));
             }
         }
-
         private bool? CheckPhrase(string phrase)
         {
             return null;
