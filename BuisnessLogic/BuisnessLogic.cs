@@ -23,6 +23,7 @@ namespace BuisnessLogic
         private bool? CheckPhrase(string phrase)
         {
             return null;
+            //ААААА РАСССЕЕЕЕЕЯЯЯЯЯЯ
         }
     }
 }
