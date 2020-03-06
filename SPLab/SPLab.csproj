@@ -36,8 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LowLevelArithmetic_1">
-      <HintPath>..\LowLevelArithmetic\obj\Debug\LowLevelArithmetic_1.dll</HintPath>
+    <Reference Include="LLArithmetic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LLArithmetic\LLArithmetic.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

@@ -28,7 +28,7 @@ namespace SPLab.ViewModels
             {
                 return myCommand ?? (myCommand = new DelegateCommand(obj =>
                 {
-                    var a = LowLevelArithmetic.Summator.Sum(1,2);
+                    var a = LLArithmetic.Summator.Sum(1,2);
                 }));
             }
         }
