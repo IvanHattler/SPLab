@@ -41,28 +41,39 @@ namespace BuisnessLogic
             }";
             SyntaxTree tree = CSharpSyntaxTree.ParseText(programText);
             CompilationUnitSyntax root = tree.GetCompilationUnitRoot();
-            var main = (from methodDeclaration in root.DescendantNodes()
-                                        .OfType<MethodDeclarationSyntax>()
-                            where methodDeclaration.Identifier.ValueText == "Main"
-                            select methodDeclaration).First();
-            foreach(var statement in main.Body.Statements)
-            {
-                if (statement is DoStatementSyntax)
-                {
-                    var condition = (statement as DoStatementSyntax).Condition as ConditionalExpressionSyntax;
-                    //var expSynt = condition.WhenTrue;
-                }
-                else if (statement is LocalDeclarationStatementSyntax)
-                {
-                    var decl = (statement as LocalDeclarationStatementSyntax).Declaration;
-                    //var type = decl.Type;
-                    foreach (var item in decl.Variables)
-                    {
-                        var ident = item.Identifier;
-                        dynamic value = item.Initializer.Value.GetFirstToken().Value;
-                    }
-                }
-            }
+            var compilation = CSharpCompilation.Create("Namespace1")
+                .AddReferences(MetadataReference.CreateFromFile(
+                    typeof(string).Assembly.Location))
+                .AddSyntaxTrees(tree);
+            SemanticModel model = compilation.GetSemanticModel(tree);
+            //var main = (from methodDeclaration in root.DescendantNodes()
+            //                            .OfType<MethodDeclarationSyntax>()
+            //                where methodDeclaration.Identifier.ValueText == "Main"
+            //                select methodDeclaration).First();
+            //dynamic value;
+            //SyntaxToken ident;
+            //foreach (var statement in main.Body.Statements)
+            //{
+            //    if (statement is DoStatementSyntax doStatementSyntax)
+            //    {
+            //        var condition = doStatementSyntax.Condition;
+            //        var body = doStatementSyntax.Statement;
+            //        foreach (var item in body.ChildNodes())
+            //        {
+
+            //        }
+            //    }
+            //    else if (statement is LocalDeclarationStatementSyntax lDecl)
+            //    {
+            //        var decl = lDecl.Declaration;
+            //        //var type = decl.Type;
+            //        foreach (var item in decl.Variables)
+            //        {
+            //            ident = item.Identifier;
+            //            value = item.Initializer.Value.GetFirstToken().Value;
+            //        }
+            //    }
+            //}
             return null;
         }
     }

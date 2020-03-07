@@ -68,7 +68,7 @@ namespace SPLab.ViewModels
         private string _Phrase = @"int i = 0;
 do 
 {
-    i++;
+    i++;j++;a = a-- - --a;
 } 
 while (i<5);";
         #region Commands
