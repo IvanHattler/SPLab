@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -48,7 +49,20 @@ namespace BuisnessLogic
             {
                 if (statement is DoStatementSyntax)
                 {
-                    var condition = (statement as DoStatementSyntax).Condition;
+                    var condition = (statement as DoStatementSyntax).Condition as ConditionalExpressionSyntax;
+                    //var expSynt = condition.WhenTrue;
+                }
+                else if (statement is LocalDeclarationStatementSyntax)
+                {
+                    var decl = (statement as LocalDeclarationStatementSyntax).Declaration;
+                    var type = decl.Type;
+                    var vars = decl.Variables;
+                    var str = type.GetFirstToken().Value;//.ToString();
+                    foreach (var item in vars)
+                    {
+                        var ident = item.Identifier;
+                        var value = item.Initializer.Value.GetFirstToken().Value;
+                    }
                 }
             }
             return null;
