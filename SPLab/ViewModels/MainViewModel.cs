@@ -7,6 +7,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using SPLab.Commands;
+using LLArithmetic;
+using BuisnessLogic;
 
 namespace SPLab.ViewModels
 {
@@ -51,18 +53,49 @@ namespace SPLab.ViewModels
             }
         }
         private uint _ResultOfDiv = 0;
-        #region Commands
-        private DelegateCommand myCommand;
-        public DelegateCommand My
+        public string Phrase
         {
             get
             {
-                return myCommand ?? (myCommand = new DelegateCommand(obj =>
+                return _Phrase;
+            }
+            set
+            {
+                _Phrase = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _Phrase = @"int i = 0;
+do 
+{
+    i++;
+} 
+while (i<5);";
+        #region Commands
+        private DelegateCommand divCommand;
+        public DelegateCommand Div
+        {
+            get
+            {
+                return divCommand ?? (divCommand = new DelegateCommand(obj =>
                 {
+                    
                     if (Denominator != 0)
                     {
-                        ResultOfDiv = LLArithmetic.Divider.Div(Dividend, Denominator);
+                        ResultOfDiv = Divider.Div(Dividend, Denominator);
                     }
+                }));
+            }
+        }
+        private DelegateCommand checkCommand;
+        public DelegateCommand Check
+        {
+            get
+            {
+                return checkCommand ?? (checkCommand = new DelegateCommand(obj =>
+                {
+                    DoWhileAnalizer doWhileAnalizer = new DoWhileAnalizer(Phrase);
+                    bool? a = doWhileAnalizer.IsExecute;
                 }));
             }
         }
