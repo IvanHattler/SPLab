@@ -55,13 +55,11 @@ namespace BuisnessLogic
                 else if (statement is LocalDeclarationStatementSyntax)
                 {
                     var decl = (statement as LocalDeclarationStatementSyntax).Declaration;
-                    var type = decl.Type;
-                    var vars = decl.Variables;
-                    var str = type.GetFirstToken().Value;//.ToString();
-                    foreach (var item in vars)
+                    //var type = decl.Type;
+                    foreach (var item in decl.Variables)
                     {
                         var ident = item.Identifier;
-                        var value = item.Initializer.Value.GetFirstToken().Value;
+                        dynamic value = item.Initializer.Value.GetFirstToken().Value;
                     }
                 }
             }
