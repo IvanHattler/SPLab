@@ -6,7 +6,7 @@
 .class public abstract auto ansi sealed beforefieldinit LLArithmetic.Divider 
 	extends [mscorlib]System.Object
 {
-  .method public hidebysig static uint32  Div(uint32 a, uint32 b) cil managed
+  .method public hidebysig static uint32 Div(uint32 a, uint32 b) cil managed
   {
     .maxstack 2
 	ldarg.0

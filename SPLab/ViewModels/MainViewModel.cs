@@ -59,7 +59,10 @@ namespace SPLab.ViewModels
             {
                 return myCommand ?? (myCommand = new DelegateCommand(obj =>
                 {
-                    ResultOfDiv = LLArithmetic.Divider.Div(Dividend, Denominator);
+                    if (Denominator != 0)
+                    {
+                        ResultOfDiv = LLArithmetic.Divider.Div(Dividend, Denominator);
+                    }
                 }));
             }
         }

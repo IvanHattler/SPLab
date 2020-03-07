@@ -11,12 +11,13 @@
         <local:MainViewModel></local:MainViewModel>
     </Window.DataContext>
     <Grid>
-        <Border BorderThickness="1" BorderBrush="Black" Margin="0,33,316.8,174.6"></Border>
-        <Label Margin="114,43,326.8,252.6">Dividend</Label>
-        <Label Margin="114,78,326.8,217.6">Denominator</Label>
-        <Label Content="{Binding ResultOfDiv}" Margin="114,113,326.8,182.6"></Label>
-        <TextBox Text="{Binding Dividend}" Margin="10,43,415.8,252.6"></TextBox>
-        <TextBox Text="{Binding Denominator}" Margin="10,78,415.8,217.6"></TextBox>
-        <Button Command="{Binding My}" Margin="10,113,415.8,182.6" Width="Auto"></Button>
+        <Border BorderThickness="1" BorderBrush="Black" Margin="12,9,304.8,180.6"></Border>
+        <Label Margin="22,10,314.8,290.6" HorizontalAlignment="Center">First module</Label>
+        <Label Margin="126,35,314.8,260.6">Dividend</Label>
+        <Label Margin="126,70,314.8,225.6">Denominator</Label>
+        <Label Content="{Binding ResultOfDiv}" Margin="126,105,314.8,190.6"></Label>
+        <TextBox Text="{Binding Dividend}" Margin="22,35,403.8,260.6"></TextBox>
+        <TextBox Text="{Binding Denominator}" Margin="22,70,403.8,225.6"></TextBox>
+        <Button Command="{Binding My}" Margin="22,105,403.8,190.6" Width="Auto"></Button>
     </Grid>
 </Window>
