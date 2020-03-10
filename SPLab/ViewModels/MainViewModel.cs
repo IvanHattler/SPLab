@@ -9,11 +9,26 @@ using System.Collections.ObjectModel;
 using SPLab.Commands;
 using LLArithmetic;
 using BuisnessLogic;
+using SPLab.Models;
 
 namespace SPLab.ViewModels
 {
     class MainViewModel : INotifyPropertyChanged
     {
+        public ObservableCollection<string> LogMessages
+        {
+            get
+            {
+                return _LogMessages;
+            }
+            set
+            {
+                _LogMessages = value;
+                OnPropertyChanged();
+            }
+        }
+        private ObservableCollection<string> _LogMessages = new ObservableCollection<string>();
+        private Logger logger;
         public uint Denominator
         {
             get
@@ -71,6 +86,10 @@ do
     i++;j++;a = a-- - --a;
 } 
 while (i<5);";
+        public MainViewModel()
+        {
+            logger = new Logger(LogMessages);
+        }
         #region Commands
         private DelegateCommand divCommand;
         public DelegateCommand Div
@@ -79,11 +98,13 @@ while (i<5);";
             {
                 return divCommand ?? (divCommand = new DelegateCommand(obj =>
                 {
-                    
                     if (Denominator != 0)
                     {
                         ResultOfDiv = Divider.Div(Dividend, Denominator);
+                        logger.Log("Sucsess");
                     }
+                    else
+                        logger.Log("Error");
                 }));
             }
         }
@@ -96,6 +117,10 @@ while (i<5);";
                 {
                     DoWhileAnalizer doWhileAnalizer = new DoWhileAnalizer(Phrase);
                     bool? a = doWhileAnalizer.IsExecute;
+                    if (a == true)
+                        logger.Log("Sucsess");
+                    else
+                        logger.Log("Error");
                 }));
             }
         }

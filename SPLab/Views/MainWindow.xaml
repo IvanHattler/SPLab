@@ -6,20 +6,21 @@
         xmlns:local="clr-namespace:SPLab.ViewModels" 
         Style="{StaticResource macWnd}"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Main Window - (1)" Height="350" Width="525">
+        Title="Main Window - (1)" Height="500" Width="700">
     <Window.DataContext>
         <local:MainViewModel></local:MainViewModel>
     </Window.DataContext>
     <Grid>
-        <Border BorderThickness="1" BorderBrush="Black" Margin="12,9,304.8,180.6"></Border>
-        <Label Margin="22,10,314.8,290.6" HorizontalAlignment="Center">First module</Label>
-        <Label Margin="126,35,314.8,260.6">Dividend</Label>
-        <Label Margin="126,70,314.8,225.6">Denominator</Label>
-        <Label Content="{Binding ResultOfDiv}" Margin="126,105,314.8,190.6"></Label>
-        <TextBox Text="{Binding Dividend}" Margin="22,35,403.8,260.6"></TextBox>
-        <TextBox Text="{Binding Denominator}" Margin="22,70,403.8,225.6"></TextBox>
-        <Button Command="{Binding Div}" Content="Divide" Margin="22,105,403.8,190.6" Width="Auto"></Button>
-        <TextBox TextWrapping="Wrap" Text="{Binding Phrase}" Margin="225,10,87.8,180.6"></TextBox>
-        <Button Command="{Binding Check}" Content="Check" Margin="225,150,200.8,145.6" Width="Auto"></Button>
+        <Border BorderThickness="1" BorderBrush="Black" Margin="12,9,0,0" Height="136" VerticalAlignment="Top" HorizontalAlignment="Left" Width="208"></Border>
+        <Label Margin="78,10,0,0" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top">First module</Label>
+        <Label Margin="126,35,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="84">Dividend</Label>
+        <Label Margin="126,70,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="84">Denominator</Label>
+        <Label Content="{Binding ResultOfDiv}" Margin="126,105,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="84"></Label>
+        <TextBox Text="{Binding Dividend}" Margin="22,35,0,0" HorizontalAlignment="Left" Width="99" Height="30" VerticalAlignment="Top"></TextBox>
+        <TextBox Text="{Binding Denominator}" Margin="22,70,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="99"></TextBox>
+        <Button Command="{Binding Div}" Content="Divide" Margin="22,105,0,0" Width="99" HorizontalAlignment="Left" VerticalAlignment="Top"></Button>
+        <TextBox TextWrapping="Wrap" Text="{Binding Phrase}" Margin="225,9,9.8,0" Height="135" VerticalAlignment="Top"></TextBox>
+        <Button Command="{Binding Check}" Content="Check" Margin="0,149,9.8,0" Width="99" VerticalAlignment="Top" HorizontalAlignment="Right"></Button>
+        <ListBox ItemsSource="{Binding LogMessages}" Margin="10,0,10,50" Height="132" VerticalAlignment="Bottom"></ListBox>
     </Grid>
 </Window>
