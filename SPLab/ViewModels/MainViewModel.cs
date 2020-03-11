@@ -83,7 +83,7 @@ namespace SPLab.ViewModels
         private string _Phrase = @"int i = 0;
 do 
 {
-    i++;j++;a = a-- - --a;
+    i+1;
 } 
 while (i<5);";
         public MainViewModel()
