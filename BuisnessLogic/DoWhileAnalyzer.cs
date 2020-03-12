@@ -6,15 +6,15 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace BuisnessLogic
 {
-    public class DoWhileAnalizer
+    public class DoWhileAnalyzer 
     {
         private bool? isExecuteMoreOne = null;
         public string Phrase { get; set; }
-        public DoWhileAnalizer(string phrase)
+        public DoWhileAnalyzer(string phrase)
         {
             Phrase = phrase;
         }
-        public bool? IsExecute
+        public bool? IsExecuteMoreOne
         {
             get
             {
@@ -58,16 +58,18 @@ namespace BuisnessLogic
                     foreach (var item in body.ChildNodes())
                     {
                         value = ApplyExpr(value, ident, item);
-                    }    
+                    }
+                    //if condition == true then result = true;
                 }
                 else if (statement is LocalDeclarationStatementSyntax lDecl)
                 {
                     var decl = lDecl.Declaration;
-                    foreach (var item in decl.Variables)
-                    {
+                    var item = decl.Variables.First();
+                    //foreach (var item in decl.Variables)
+                    //{
                         ident = item.Identifier.ValueText;
                         value = item.Initializer.Value.GetFirstToken().Value;
-                    }
+                    //}
                 }
             }
             return result;
@@ -127,33 +129,25 @@ namespace BuisnessLogic
                     //    
                     //}
                     var oper1 = binaryExpressionSyntax.OperatorToken.ValueText;
+                    switch (oper1)
+                    {
+                        case "+":
+                            break;
+                        case "-":
+                            break;
+                        case "*":
+                            break;
+                        case "/":
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 default:
                     break;
             }
 
             return value;
-        }
-    }
-    public class WhileAnalizer
-    {
-        private string phrase;
-
-        private int count;
-
-        private string Iter;
-
-        public string Phrase { get => phrase; set => phrase = value; }
-        public int Count { get => count; set => count = value; }
-        public string Iter1 { get => Iter; set => Iter = value; }
-
-        string WhileAnalizer(string InputStream)
-        {
-            string i = "while";
-            for(int i=0;i<InputStream.Length;i+=5)
-            {
-                if(i!=InputStream.Substring(i,5))
-            }
         }
     }
 }
