@@ -63,11 +63,12 @@ namespace BuisnessLogic
                 else if (statement is LocalDeclarationStatementSyntax lDecl)
                 {
                     var decl = lDecl.Declaration;
-                    foreach (var item in decl.Variables)
-                    {
+                    var item = decl.Variables.First();
+                    //foreach (var item in decl.Variables)
+                    //{
                         ident = item.Identifier.ValueText;
                         value = item.Initializer.Value.GetFirstToken().Value;
-                    }
+                    //}
                 }
             }
             return result;
@@ -133,27 +134,6 @@ namespace BuisnessLogic
             }
 
             return value;
-        }
-    }
-    public class WhileAnalizer
-    {
-        private string phrase;
-
-        private int count;
-
-        private string Iter;
-
-        public string Phrase { get => phrase; set => phrase = value; }
-        public int Count { get => count; set => count = value; }
-        public string Iter1 { get => Iter; set => Iter = value; }
-
-        string WhileAnalizer(string InputStream)
-        {
-            string i = "while";
-            for(int i=0;i<InputStream.Length;i+=5)
-            {
-                if(i!=InputStream.Substring(i,5))
-            }
         }
     }
 }
