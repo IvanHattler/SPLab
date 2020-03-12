@@ -59,6 +59,7 @@ namespace BuisnessLogic
                     {
                         value = ApplyExpr(value, ident, item);
                     }
+                    //if condition == true then result = true;
                 }
                 else if (statement is LocalDeclarationStatementSyntax lDecl)
                 {
@@ -128,6 +129,19 @@ namespace BuisnessLogic
                     //    
                     //}
                     var oper1 = binaryExpressionSyntax.OperatorToken.ValueText;
+                    switch (oper1)
+                    {
+                        case "+":
+                            break;
+                        case "-":
+                            break;
+                        case "*":
+                            break;
+                        case "/":
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 default:
                     break;
