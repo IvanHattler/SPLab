@@ -116,7 +116,7 @@ while (i<5);";
                 return checkCommand ?? (checkCommand = new DelegateCommand(obj =>
                 {
                     DoWhileAnalizer doWhileAnalizer = new DoWhileAnalizer(Phrase);
-                    bool? a = doWhileAnalizer.IsExecute;
+                    bool? a = doWhileAnalizer.IsExecuteMoreOne;
                     if (a == true)
                         logger.Log("Sucsess");
                     else

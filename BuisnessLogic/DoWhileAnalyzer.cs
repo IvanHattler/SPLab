@@ -6,15 +6,15 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace BuisnessLogic
 {
-    public class DoWhileAnalizer
+    public class DoWhileAnalyzer 
     {
         private bool? isExecuteMoreOne = null;
         public string Phrase { get; set; }
-        public DoWhileAnalizer(string phrase)
+        public DoWhileAnalyzer(string phrase)
         {
             Phrase = phrase;
         }
-        public bool? IsExecute
+        public bool? IsExecuteMoreOne
         {
             get
             {
@@ -58,7 +58,7 @@ namespace BuisnessLogic
                     foreach (var item in body.ChildNodes())
                     {
                         value = ApplyExpr(value, ident, item);
-                    }    
+                    }
                 }
                 else if (statement is LocalDeclarationStatementSyntax lDecl)
                 {
