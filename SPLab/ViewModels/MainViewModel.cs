@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using SPLab.Commands;
 using BuisnessLogic;
 using SPLab.Models;
+using System.Diagnostics;
 
 namespace SPLab.ViewModels
 {
@@ -28,7 +29,7 @@ namespace SPLab.ViewModels
         }
         private ObservableCollection<string> _LogMessages = new ObservableCollection<string>();
         private Logger logger;
-        public uint Denominator
+        public string Denominator
         {
             get
             {
@@ -40,8 +41,8 @@ namespace SPLab.ViewModels
                 OnPropertyChanged();
             }
         }
-        private uint _Denominator = 4;
-        public uint Dividend
+        private string _Denominator = "4";
+        public string Dividend
         {
             get
             {
@@ -53,8 +54,8 @@ namespace SPLab.ViewModels
                 OnPropertyChanged();
             }
         }
-        private uint _Dividend = 15;
-        public uint ResultOfDiv
+        private string _Dividend = "15";
+        public string ResultOfDiv
         {
             get
             {
@@ -66,7 +67,7 @@ namespace SPLab.ViewModels
                 OnPropertyChanged();
             }
         }
-        private uint _ResultOfDiv = 0;
+        private string _ResultOfDiv = "0";
         private bool isDoWhile = true;
         public ObservableCollection<string> Variants
         {
@@ -152,13 +153,26 @@ while (i<5)
             {
                 return divCommand ?? (divCommand = new DelegateCommand(obj =>
                 {
-                    if (Denominator != 0)
+                    if (isDoWhile)
                     {
-                        ResultOfDiv = DividerUint.Divider.Div(Dividend, Denominator);
-                        logger.Log("Success",$"{ResultOfDiv}");
+                        uint denom = Convert.ToUInt32(Denominator);
+                        uint div = Convert.ToUInt32(Dividend);
+                        if (denom != 0)
+                        {
+                            ResultOfDiv = DividerUint.Divider.Div(div, denom).ToString();
+                            logger.Log("Success", ResultOfDiv);
+                        }
+                        else
+                            logger.Log("Error", "Divided by zero");
                     }
                     else
-                        logger.Log("Error","Divided by zero");
+                    {
+                        double denom = Convert.ToDouble(Denominator);
+                        double div = Convert.ToDouble(Dividend);
+                        ResultOfDiv = DividerFloat64.Divider.Div(div, denom).ToString();
+                        logger.Log("Success", ResultOfDiv);
+                    }
+                    
                 }));
             }
         }
@@ -169,17 +183,22 @@ while (i<5)
             {
                 return checkCommand ?? (checkCommand = new DelegateCommand(obj =>
                 {
-                    //DoWhileAnalyzer doWhileAnalizer = new DoWhileAnalyzer(Phrase);
-                    //bool? a = doWhileAnalizer.IsExecuteMoreOne;
-                    DoWhileCompiler doWhileCompiler = new DoWhileCompiler(Phrase,isDoWhile);
-                    logger.Log("", $"{doWhileCompiler.CheckCount()}");
-                    //bool? a = doWhileCompiler.IsExecuteMoreOne;
-                    //if (a == true)
-                    //    logger.Log("Success","More than one execution");
-                    //else if(a == false)
-                    //    logger.Log("Success", "One execution");
-                    //else
-                    //    logger.Log("Error");
+                    if (isDoWhile)
+                    {
+                        DoWhileCompiler doWhileCompiler = new DoWhileCompiler(Phrase, isDoWhile);
+                        bool? a = doWhileCompiler.IsExecuteMoreOne;
+                        if (a == true)
+                            logger.Log("Success", "More than one execution");
+                        else if (a == false)
+                            logger.Log("Success", "One execution");
+                        else
+                            logger.Log("Error");
+                    }
+                    else
+                    {
+                        DoWhileCompiler doWhileCompiler = new DoWhileCompiler(Phrase, isDoWhile);
+                        logger.Log("", $"{doWhileCompiler.IsExecuteMoreOne}");
+                    }
                 }));
             }
         }
