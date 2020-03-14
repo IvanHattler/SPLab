@@ -1,9 +1,9 @@
-﻿.assembly LLArithmetic
+﻿.assembly DividerUint
 {
   .ver 1:0:0:0
 }
-.module LLArithmetic.dll
-.class public abstract auto ansi sealed beforefieldinit LLArithmetic.Divider 
+.module DividerUint.dll
+.class public abstract auto ansi sealed beforefieldinit DividerUint.Divider 
 	extends [mscorlib]System.Object
 {
   .method public hidebysig static uint32 Div(uint32 a, uint32 b) cil managed

@@ -34,8 +34,8 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="il divide double.il" />
-    <None Include="il.il" />
+    <None Include="DividerFloat64.il" />
+    <None Include="DividerUint.il" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

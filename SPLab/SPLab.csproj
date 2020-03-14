@@ -36,9 +36,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LLArithmetic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LLArithmetic\LLArithmetic.dll</HintPath>
+    <Reference Include="DividerFloat64">
+      <HintPath>..\LLArithmetic\DividerFloat64.dll</HintPath>
+    </Reference>
+    <Reference Include="DividerUint">
+      <HintPath>..\LLArithmetic\DividerUint.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

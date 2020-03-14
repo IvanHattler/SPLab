@@ -11,6 +11,7 @@
         <local:MainViewModel></local:MainViewModel>
     </Window.DataContext>
     <Grid>
+        <ComboBox Margin="12,161,589,288.2" ItemsSource="{Binding Variants}" SelectedIndex="{Binding SelectedIndex}"/>
         <Border BorderThickness="1" BorderBrush="Black" Margin="12,9,0,0" Height="136" VerticalAlignment="Top" HorizontalAlignment="Left" Width="208"></Border>
         <Label Margin="78,10,0,0" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top">First module</Label>
         <Label Margin="126,35,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="84">Dividend</Label>

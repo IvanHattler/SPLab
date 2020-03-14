@@ -7,7 +7,6 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using SPLab.Commands;
-using LLArithmetic;
 using BuisnessLogic;
 using SPLab.Models;
 
@@ -68,6 +67,35 @@ namespace SPLab.ViewModels
             }
         }
         private uint _ResultOfDiv = 0;
+        private bool isDoWhile = true;
+        public ObservableCollection<string> Variants
+        {
+            get
+            {
+                return _Variants;
+            }
+            set
+            {
+                _Variants = value;
+                OnPropertyChanged();
+            }
+        }
+        private ObservableCollection<string> _Variants = new ObservableCollection<string>()
+        { "Variant 1", "Variant 2"};
+        public int SelectedIndex
+        {
+            get
+            {
+                return _SelectedIndex;
+            }
+            set
+            {
+                _SelectedIndex = value;
+                OnPropertyChanged();
+                ChangeVariant(value);
+            }
+        }
+        private int _SelectedIndex = 0;
         public string Phrase
         {
             get
@@ -83,13 +111,39 @@ namespace SPLab.ViewModels
         private string _Phrase = @"int i = 0;
 do 
 {
-    i = i+1-1+1;
+    i = i+1;
 } 
-while (i<5);";
+while (i<5);"; 
         public MainViewModel()
         {
             logger = new Logger(LogMessages);
         }
+        private void ChangeVariant(int ind)
+        {
+            switch (ind)
+            {
+                case 0:
+                    Phrase = @"int i = 0;
+do 
+{
+    i = i+1;
+} 
+while (i<5);";
+                    isDoWhile = true;
+                    break;
+                case 1:
+                    Phrase = @"int i = 0;
+while (i<5) 
+{
+    i = i+1;
+}; ";
+                    isDoWhile = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         #region Commands
         private DelegateCommand divCommand;
         public DelegateCommand Div
@@ -100,11 +154,11 @@ while (i<5);";
                 {
                     if (Denominator != 0)
                     {
-                        ResultOfDiv = Divider.Div(Dividend, Denominator);
-                        logger.Log("Sucsess");
+                        ResultOfDiv = DividerUint.Divider.Div(Dividend, Denominator);
+                        logger.Log("Success",$"{ResultOfDiv}");
                     }
                     else
-                        logger.Log("Error");
+                        logger.Log("Error","Divided by zero");
                 }));
             }
         }
@@ -117,13 +171,13 @@ while (i<5);";
                 {
                     //DoWhileAnalyzer doWhileAnalizer = new DoWhileAnalyzer(Phrase);
                     //bool? a = doWhileAnalizer.IsExecuteMoreOne;
-                    DoWhileCompiler doWhileCompiler = new DoWhileCompiler(Phrase);
+                    DoWhileCompiler doWhileCompiler = new DoWhileCompiler(Phrase,isDoWhile);
                     logger.Log("", $"{doWhileCompiler.CheckCount()}");
                     //bool? a = doWhileCompiler.IsExecuteMoreOne;
                     //if (a == true)
-                    //    logger.Log("Sucsess","More than one execution");
+                    //    logger.Log("Success","More than one execution");
                     //else if(a == false)
-                    //    logger.Log("Sucsess", "One execution");
+                    //    logger.Log("Success", "One execution");
                     //else
                     //    logger.Log("Error");
                 }));

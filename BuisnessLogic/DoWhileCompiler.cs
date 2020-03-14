@@ -15,10 +15,12 @@ namespace BuisnessLogic
     public class DoWhileCompiler
     {
         private bool? isExecuteMoreOne = null;
+        public bool IsDoWhile { get; set; }
         public string Phrase { get; set; }
-        public DoWhileCompiler(string phrase)
+        public DoWhileCompiler(string phrase, bool isDoWhile)
         {
             Phrase = phrase;
+            IsDoWhile = isDoWhile;
         }
         public bool? IsExecuteMoreOne
         {
@@ -44,10 +46,21 @@ namespace BuisnessLogic
 }";
             SyntaxTree tree = CSharpSyntaxTree.ParseText(res);
             CompilationUnitSyntax root = tree.GetCompilationUnitRoot();
-            var cycle = (from methodDeclaration in root.DescendantNodes()
+            dynamic cycle;
+            if (IsDoWhile)
+            {
+                cycle = (from methodDeclaration in root.DescendantNodes()
                                         .OfType<DoStatementSyntax>()
                          select methodDeclaration).First();
-            res = res.Insert(cycle.Statement.FullSpan.Start+1, $"{tempVar}++;");
+                res = res.Insert(cycle.Statement.FullSpan.Start + 1, $"{tempVar}++;");
+            }
+            else
+            {
+                cycle = (from methodDeclaration in root.DescendantNodes()
+                                        .OfType<WhileStatementSyntax>()
+                         select methodDeclaration).First();
+                res = res.Insert(cycle.Statement.FullSpan.Start + 1, $"{tempVar}++;");
+            }
             return res;
         }
         private bool? CheckPhrase()
