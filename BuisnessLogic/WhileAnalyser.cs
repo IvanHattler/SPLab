@@ -8,10 +8,13 @@ namespace BuisnessLogic
 {
     public class WhileAnalyzer
     {
+        // входящая строка
         private string phrase;
 
+        // сколько раз выполнился цикл
         private int count;
 
+        // выделенный итератор
         private string Iter;
 
         public string Phrase { get => phrase; set => phrase = value; }
@@ -56,6 +59,7 @@ namespace BuisnessLogic
                     k++;
                 }
             }
+            // Не работает 
 
             //string body = InputStream.Substring(i, InputStream.Length - i);
         }
