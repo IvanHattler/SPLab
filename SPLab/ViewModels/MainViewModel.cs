@@ -83,7 +83,7 @@ namespace SPLab.ViewModels
         private string _Phrase = @"int i = 0;
 do 
 {
-    i+1;
+    i = i+1-1+1;
 } 
 while (i<5);";
         public MainViewModel()
@@ -115,12 +115,17 @@ while (i<5);";
             {
                 return checkCommand ?? (checkCommand = new DelegateCommand(obj =>
                 {
-                    DoWhileAnalyzer doWhileAnalizer = new DoWhileAnalyzer(Phrase);
-                    bool? a = doWhileAnalizer.IsExecuteMoreOne;
-                    if (a == true)
-                        logger.Log("Sucsess");
-                    else
-                        logger.Log("Error");
+                    //DoWhileAnalyzer doWhileAnalizer = new DoWhileAnalyzer(Phrase);
+                    //bool? a = doWhileAnalizer.IsExecuteMoreOne;
+                    DoWhileCompiler doWhileCompiler = new DoWhileCompiler(Phrase);
+                    logger.Log("", $"{doWhileCompiler.CheckCount()}");
+                    //bool? a = doWhileCompiler.IsExecuteMoreOne;
+                    //if (a == true)
+                    //    logger.Log("Sucsess","More than one execution");
+                    //else if(a == false)
+                    //    logger.Log("Sucsess", "One execution");
+                    //else
+                    //    logger.Log("Error");
                 }));
             }
         }
