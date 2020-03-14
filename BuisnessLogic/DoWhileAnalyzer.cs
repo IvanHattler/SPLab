@@ -120,24 +120,74 @@ namespace BuisnessLogic
                     }
                     break;
                 case BinaryExpressionSyntax binaryExpressionSyntax:
-                    var left = (binaryExpressionSyntax.Left as IdentifierNameSyntax)
-                        .Identifier.ValueText;
-                    //var right = (binaryExpressionSyntax.Right as)
-                    //    .Identifier.ValueText;
-                    //if (left == ident || right == ident)
-                    //{
-                    //    
-                    //}
+                    dynamic left = "";
+                    dynamic right = "";
+                    #region Left Init
+                    if (binaryExpressionSyntax.Left is IdentifierNameSyntax)
+                    {
+                        left = (binaryExpressionSyntax.Left as IdentifierNameSyntax)
+                            .Identifier.ValueText;
+                    }
+                    else if (binaryExpressionSyntax.Left is LiteralExpressionSyntax)
+                    {
+                        left = (binaryExpressionSyntax.Left as LiteralExpressionSyntax)
+                            .Token.Value;
+                    }
+                    #endregion
+                    #region Right Init
+                    if (binaryExpressionSyntax.Right is LiteralExpressionSyntax)
+                    {
+                        right = (binaryExpressionSyntax.Right as LiteralExpressionSyntax)
+                            .Token.Value;
+                    }
+                    else if (binaryExpressionSyntax.Right is IdentifierNameSyntax)
+                    {
+                        right = (binaryExpressionSyntax.Right as IdentifierNameSyntax)
+                            .Identifier.ValueText;
+                    }
+                    #endregion
                     var oper1 = binaryExpressionSyntax.OperatorToken.ValueText;
                     switch (oper1)
                     {
                         case "+":
+                            if (left is string && left == ident)
+                            {
+                                value += right;
+                            }
+                            else if (right is string && right == ident)
+                            {
+                                value += left;
+                            }
                             break;
                         case "-":
+                            if (left is string && left == ident)
+                            {
+                                value -= right;
+                            }
+                            else if (right is string && right == ident)
+                            {
+                                value -= left;
+                            }
                             break;
                         case "*":
+                            if (left is string && left == ident)
+                            {
+                                value *= right;
+                            }
+                            else if (right is string && right == ident)
+                            {
+                                value *= left;
+                            }
                             break;
                         case "/":
+                            if (left is string && left == ident)
+                            {
+                                value /= right;
+                            }
+                            else if (right is string && right == ident)
+                            {
+                                value /= left;
+                            }
                             break;
                         default:
                             break;
