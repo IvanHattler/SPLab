@@ -18,15 +18,15 @@ namespace BuisnessLogic
         public int Count { get => count; set => count = value; }
         public string Iter1 { get => Iter; set => Iter = value; }
 
-        public int getindex(int i,string lastword,string phr)
+        public int getindex(int i, string lastword, string phr)
         {
             int k = 0;
             int ans = 0;
-            while (k<phr.Length)
+            while (k < phr.Length)
             {
                 if (phr.Substring(k, lastword.Length) == lastword)
                 {
-                   ans = i + lastword.Length;
+                    ans = i + lastword.Length;
                 }
                 else
                     k += lastword.Length;
@@ -40,18 +40,18 @@ namespace BuisnessLogic
             int i = 0;
             bool flag = true;
             int k = 0;
-            while (i < InputStream.Length&&flag)
+            while (i < InputStream.Length && flag)
             {
-                if(InputStream.Substring(i,5)==word)
+                if (InputStream.Substring(i, 5) == word)
                 {
                     i += 5;
                     flag = false;
                 }
                 i += 5;
             }
-            while(i< InputStream.Length && flag2)
+            while (i < InputStream.Length && flag2)
             {
-                if (InputStream.Substring(i, 1) =='(')
+                if (InputStream.Substring(i, 1) == '(')
                 {
                     k++;
                 }
