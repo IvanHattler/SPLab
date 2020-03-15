@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BuisnessLogic.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -17,9 +18,24 @@ namespace SPLab.Models
         {
             Messages = logMessages;
         }
+        /// <summary>
+        /// Метод для логгирования команд
+        /// </summary>
+        /// <param name="result">Успешное выполнение или нет</param>
+        /// <param name="info">Доп информация</param>
+        /// <param name="commandName"></param>
         public void Log(string result, string info = "-", [CallerMemberName]string commandName = "")
         {
             string msgForLog = $"{DateTime.Now}) - Command: {commandName}, Result: {result}, Info: {info}";
+            Messages.Add(msgForLog);
+        }
+        /// <summary>
+        /// Метод для логгирования исключений
+        /// </summary>
+        /// <param name="ex">Исключение</param>
+        public void Log(CompilationException ex)
+        {
+            string msgForLog = $"{DateTime.Now}) - Exception, Info: {ex.Message}";
             Messages.Add(msgForLog);
         }
     }

@@ -62,7 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Logger.cs" />
+    <Compile Include="Infrastructure\Logger.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="Styles\MacStyle.xaml.cs">
       <DependentUpon>MacStyle.xaml</DependentUpon>

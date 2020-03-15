@@ -10,6 +10,7 @@ using SPLab.Commands;
 using BuisnessLogic;
 using SPLab.Models;
 using System.Diagnostics;
+using BuisnessLogic.Infrastructure;
 
 namespace SPLab.ViewModels
 {
@@ -114,11 +115,28 @@ do
 {
     i = i+1;
 } 
-while (i<5);"; 
+while (i<5);";
+        public string CompilationError
+        {
+            get
+            {
+                return _CompilationError;
+            }
+            set
+            {
+                _CompilationError = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _CompilationError;
         public MainViewModel()
         {
             logger = new Logger(LogMessages);
         }
+        /// <summary>
+        /// Метод для изменения варианта задания
+        /// </summary>
+        /// <param name="ind"></param>
         private void ChangeVariant(int ind)
         {
             switch (ind)
@@ -186,18 +204,36 @@ while (i<5)
                     if (isDoWhile)
                     {
                         DoWhileCompiler doWhileCompiler = new DoWhileCompiler(Phrase, isDoWhile);
-                        bool? a = doWhileCompiler.IsExecuteMoreOne;
-                        if (a == true)
-                            logger.Log("Success", "More than one execution");
-                        else if (a == false)
-                            logger.Log("Success", "One execution");
-                        else
-                            logger.Log("Error");
+                        try
+                        {
+                            bool? a = doWhileCompiler.CheckPhrase();
+                            if (a == true)
+                                logger.Log("Success", "More than one execution");
+                            else if (a == false)
+                                logger.Log("Success", "One execution");
+                            else
+                                logger.Log("Error");
+                            CompilationError = "No compilation errors";
+                        }
+                        catch (CompilationException ex)
+                        {
+                            logger.Log(ex);
+                            CompilationError = ex.Message;
+                        }
                     }
                     else
                     {
-                        DoWhileCompiler doWhileCompiler = new DoWhileCompiler(Phrase, isDoWhile);
-                        logger.Log("", $"{doWhileCompiler.IsExecuteMoreOne}");
+                        try
+                        {
+                            DoWhileCompiler doWhileCompiler = new DoWhileCompiler(Phrase, isDoWhile);
+                            logger.Log("", $"{doWhileCompiler.CheckCount()}");
+                            CompilationError = "No compilation errors";
+                        }
+                        catch(CompilationException ex)
+                        {
+                            logger.Log(ex);
+                            CompilationError = ex.Message;
+                        }
                     }
                 }));
             }
